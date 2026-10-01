@@ -1,0 +1,15 @@
+﻿{
+  "name": "Mix da Beleza - Caixa",
+  "short_name": "Mix Caixa",
+  "description": "Fechamento e resumos do caixa do Mix da Beleza",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0f0f10",
+  "theme_color": "#101012",
+  "orientation": "portrait-primary",
+  "icons": [
+    {"src":"icon-192.png","sizes":"192x192","type":"image/png","purpose":"any maskable"},
+    {"src":"icon-512.png","sizes":"512x512","type":"image/png","purpose":"any maskable"}
+  ]
+}

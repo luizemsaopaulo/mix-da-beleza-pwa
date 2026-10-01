@@ -1,0 +1,57 @@
+{
+  "daily": [
+    {
+      "key": "2026-09-24",
+      "label": "24/09/2026",
+      "total": 620,
+      "saidas": 70,
+      "resultado": 550
+    },
+    {
+      "key": "2026-09-29",
+      "label": "29/09/2026",
+      "total": 780,
+      "saidas": 90,
+      "resultado": 690
+    },
+    {
+      "key": "2026-10-01",
+      "label": "01/10/2026",
+      "total": 500,
+      "saidas": 50,
+      "resultado": 450
+    }
+  ],
+  "weekly": [
+    {
+      "key": "2026-09-21",
+      "label": "Semana 21/09",
+      "total": 620,
+      "saidas": 70,
+      "resultado": 550
+    },
+    {
+      "key": "2026-09-28",
+      "label": "Semana 28/09",
+      "total": 1280,
+      "saidas": 140,
+      "resultado": 1140
+    }
+  ],
+  "monthly": [
+    {
+      "key": "2026-09",
+      "label": "set/2026",
+      "total": 1400,
+      "saidas": 160,
+      "resultado": 1240
+    },
+    {
+      "key": "2026-10",
+      "label": "out/2026",
+      "total": 500,
+      "saidas": 50,
+      "resultado": 450
+    }
+  ]
+}

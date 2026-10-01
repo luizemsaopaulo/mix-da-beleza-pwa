@@ -1,0 +1,100 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#101012">
+<meta name="description" content="Controle de caixa do Mix da Beleza">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<title>Mix da Beleza • Caixa</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" href="icon-192.png" type="image/png">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header class="topbar">
+  <div class="brand"><img src="icon-192.png" class="brand-icon" alt="Mix da Beleza">
+    <div><span>MIX DA BELEZA</span><h1 id="pageTitle">Fechamento do caixa</h1></div>
+  </div>
+  <button id="installBtn" class="btn ghost small hidden">Instalar</button>
+</header>
+
+<main class="page">
+  <section class="connection"><span id="connectionDot" class="dot"></span><span id="connectionText">Verificando conexão...</span></section>
+
+  <section id="view-caixa" class="view active">
+    <section class="card identity">
+      <label><span>Data do fechamento</span><input id="closingDate" type="date"></label>
+      <label><span>Fechamento feito por</span><input id="closerName" list="closerSuggestions" placeholder="Ex.: Luiz" autocomplete="name"></label>
+      <datalist id="closerSuggestions"></datalist>
+    </section>
+
+    <div class="section-title"><div><span class="eyebrow">LANÇAMENTOS</span><h2>Toque para lançar e somar valores</h2></div><button id="clearBtn" class="btn ghost small">Limpar</button></div>
+    <div class="money-grid">
+      <button class="money-card primary-card" data-field="totalEntrou"><span>Total entrou</span><strong data-total="totalEntrou">R$ 0,00</strong><small data-count="totalEntrou">Nenhum valor</small></button>
+      <button class="money-card" data-field="saidas"><span>Saídas</span><strong data-total="saidas">R$ 0,00</strong><small data-count="saidas">Nenhum valor</small></button>
+      <button class="money-card" data-field="dinheiro"><span>Dinheiro / Caixa</span><strong data-total="dinheiro">R$ 0,00</strong><small data-count="dinheiro">Nenhum valor</small></button>
+      <button class="money-card" data-field="cartao"><span>Cartão</span><strong data-total="cartao">R$ 0,00</strong><small data-count="cartao">Nenhum valor</small></button>
+      <button class="money-card" data-field="pix"><span>PIX</span><strong data-total="pix">R$ 0,00</strong><small data-count="pix">Nenhum valor</small></button>
+    </div>
+
+    <section class="summary">
+      <div><span>Formas de pagamento</span><strong id="paymentsTotal">R$ 0,00</strong></div>
+      <div><span>Diferença</span><strong id="differenceTotal">R$ 0,00</strong></div>
+      <div><span>Resultado do dia</span><strong id="netTotal">R$ 0,00</strong></div>
+      <p id="conferenceMessage">Lance os valores para conferir o caixa.</p>
+    </section>
+
+    <section class="card notes"><label><span>Observações</span><textarea id="notes" rows="3" placeholder="Ex.: compra de material, retirada, ajuste..."></textarea></label></section>
+    <button id="saveBtn" class="save-btn">Salvar fechamento</button>
+    <p id="saveFeedback" class="feedback" aria-live="polite"></p>
+
+    <section class="card history"><div class="section-title compact-title"><div><span class="eyebrow">NESTE APARELHO</span><h2>Últimos fechamentos</h2></div></div><div id="localHistory" class="history-list"></div></section>
+  </section>
+
+  <section id="view-diario" class="view report-view">
+    <div class="report-head"><div><span class="eyebrow">RESUMO</span><h2>Diário</h2></div><button class="btn ghost refresh-report" data-scope="daily">Atualizar</button></div>
+    <div id="dailyCards" class="report-cards"></div><div id="dailyBars" class="bar-list"></div>
+  </section>
+
+  <section id="view-semanal" class="view report-view">
+    <div class="report-head"><div><span class="eyebrow">RESUMO</span><h2>Semanal</h2></div><button class="btn ghost refresh-report" data-scope="weekly">Atualizar</button></div>
+    <div id="weeklyCards" class="report-cards"></div><div id="weeklyBars" class="bar-list"></div>
+  </section>
+
+  <section id="view-mensal" class="view report-view">
+    <div class="report-head"><div><span class="eyebrow">RESUMO</span><h2>Mensal</h2></div><button class="btn ghost refresh-report" data-scope="monthly">Atualizar</button></div>
+    <div id="monthlyCards" class="report-cards"></div><div id="monthlyBars" class="bar-list"></div>
+  </section>
+
+</main>
+
+<nav class="bottom-nav">
+  <button class="nav-btn active" data-view="caixa"><span>✂</span><small>Caixa</small></button>
+  <button class="nav-btn" data-view="diario"><span>▥</span><small>Diário</small></button>
+  <button class="nav-btn" data-view="semanal"><span>▥</span><small>Semanal</small></button>
+  <button class="nav-btn" data-view="mensal"><span>▥</span><small>Mensal</small></button>
+</nav>
+
+<dialog id="calcDialog">
+<form method="dialog" class="calc">
+  <header class="calc-head"><div><span class="eyebrow">CALCULADORA</span><h2 id="calcTitle">Total entrou</h2></div><button id="closeCalcBtn" class="round-btn" type="button" aria-label="Fechar">×</button></header>
+  <div class="calc-total"><span>Total deste campo</span><strong id="calcFieldTotal">R$ 0,00</strong></div>
+  <div id="entryList" class="entry-list"></div>
+  <label class="entry-label"><span>Identificação deste valor</span><input id="entryLabel" type="text" placeholder="Ex.: Caderno, outro valor"></label>
+  <div class="display"><small id="calcExpression"></small><strong id="calcDisplay">R$ 0,00</strong></div>
+  <div class="keypad" id="keypad">
+    <button type="button" class="fn" data-key="clear">C</button><button type="button" class="fn" data-key="back">⌫</button><button type="button" class="operator" data-key="÷">÷</button><button type="button" class="operator" data-key="×">×</button>
+    <button type="button" data-key="7">7</button><button type="button" data-key="8">8</button><button type="button" data-key="9">9</button><button type="button" class="operator" data-key="−">−</button>
+    <button type="button" data-key="4">4</button><button type="button" data-key="5">5</button><button type="button" data-key="6">6</button><button type="button" class="operator" data-key="+">+</button>
+    <button type="button" data-key="1">1</button><button type="button" data-key="2">2</button><button type="button" data-key="3">3</button><button type="button" class="equals" data-key="=">=</button>
+    <button type="button" class="wide" data-key="0">0</button><button type="button" data-key="00">00</button><button type="button" data-key=",">,</button>
+  </div>
+  <button id="addEntryBtn" class="btn add-entry-btn" type="button">Adicionar valor ao campo</button>
+  <button id="doneCalcBtn" class="save-btn compact" value="done">Concluir</button>
+</form>
+</dialog>
+<script src="app.js" defer></script>
+</body>
+</html>
