@@ -60,5 +60,7 @@ dialog{width:min(520px,calc(100% - 18px));max-height:96vh;border:0;padding:0;bac
 .display small{display:block;min-height:16px;color:var(--muted);font-size:.76rem}.display strong{font-size:1.65rem;font-weight:800}
 .keypad{display:grid;grid-template-columns:repeat(4,1fr);gap:8px}.keypad button{min-height:52px;border:1px solid #38383e;border-radius:13px;background:#242428;color:#fff;font-weight:800;font-size:1.07rem}
 .keypad .fn{color:var(--accent2)}.keypad .operator{background:#302817;color:#f0cf7c;border-color:#62512a}.keypad .equals{background:#604b20;border-color:#80662d;color:#fff}.keypad .wide{grid-column:span 2}
-.add-entry-btn{width:100%;margin-top:10px;background:#252116;border-color:#765e2b;color:#f0cf7c}
+.add-entry-btn{width:100%;margin-top:10px;background:#178a49;border-color:#22b963;color:#fff;font-weight:900;box-shadow:0 8px 20px rgba(23,138,73,.28)}
+.add-entry-btn:hover{background:#1a9d53}
+.add-entry-btn:active{transform:scale(.985);background:#13743e}
 @media(max-width:520px){.identity{grid-template-columns:1fr}.summary{grid-template-columns:1fr}.summary>div{border-right:0;border-bottom:1px solid var(--line)}.summary>div:nth-child(3){border-bottom:0}.money-card{min-height:105px}.page{padding:11px}.topbar{padding:10px 11px}.report-cards{grid-template-columns:1fr 1fr}.metric-card:first-child{grid-column:1/-1}}
